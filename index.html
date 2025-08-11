@@ -1,0 +1,3243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>SABCDA - Building South African Entrepreneurs</title>
+    <style>
+        /* Custom styles */
+        .navbar-dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .video-overlay {
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .slide-in-left {
+            transform: translateX(-50%);
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+        .slide-in-right {
+            transform: translateX(50%);
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+        .slide-in-left.active, .slide-in-right.active {
+            transform: translateX(0);
+            opacity: 1;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        /* CSS (Updated) */
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6e8efb, #4a6cf7);
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(74, 108, 247, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tooltip Styling */
+.tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: sans-serif;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease 0.3s; /* Delay for smooth reveal */
+}
+
+.tooltip:after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border: 5px solid transparent;
+  border-top-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Hover Effects */
+.back-to-top:hover {
+  transform: scale(1.1) translateY(0);
+  box-shadow: 0 6px 20px rgba(74, 108, 247, 0.4);
+}
+
+.back-to-top:hover .tooltip {
+  opacity: 1;
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.back-to-top {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #6e8efb, #4a6cf7);
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(74, 108, 247, 0.3);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  z-index: 999;
+}
+
+.back-to-top:hover {
+  transform: scale(1.1) translateY(0);
+  box-shadow: 0 6px 20px rgba(74, 108, 247, 0.4);
+}
+
+.back-to-top.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+ 
+  /* Animation keyframes */
+    @keyframes float1 {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(20px, 20px) rotate(5deg); }
+    }
+    @keyframes float2 {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(-15px, -15px) rotate(-5deg); }
+    }
+    @keyframes float3 {
+        0%, 100% { transform: translate(0, 0) rotate(0deg); }
+        50% { transform: translate(10px, -10px) rotate(10deg); }
+    }
+    .animate-float1 { animation: float1 8s ease-in-out infinite; }
+    .animate-float2 { animation: float2 10s ease-in-out infinite; }
+    .animate-float3 { animation: float3 12s ease-in-out infinite; }
+    
+    /* Glow effect on hover */
+    .stat-card:hover {
+        box-shadow: 0 0 25px rgba(253, 224, 71, 0.3);
+    }
+    
+    /* Subtle pulse animation for cards */
+    .stat-card {
+        animation: pulse 6s ease-in-out infinite;
+    }
+    @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.01); }
+    }
+ /* Add this CSS to your stylesheet */
+    .navbar-dropdown:hover .dropdown-menu {
+        display: block;
+        animation: fadeIn 0.2s ease-out;
+    }
+    
+    .dropdown-menu {
+        /* Add a slight delay before closing */
+        transition: opacity 0.2s ease, visibility 0.2s ease 0.1s;
+    }
+    
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Keep dropdown open when hovering over it */
+    .dropdown-menu:hover {
+        display: block;
+    }
+ .card-container {
+        transition: all 0.3s ease;
+    }
+    
+    .card-expanded {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, padding 0.3s ease;
+    }
+    
+    .card-expanded.active {
+        max-height: 1000px; /* Adjust based on your content */
+        display: block;
+    }
+
+    .news-card-container {
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .news-card-expanded {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s ease, padding 0.3s ease;
+    }
+    
+    .news-card-expanded.active {
+        max-height: 1000px;
+        display: block;
+    }
+    
+    .news-card-main.rounded-b-none {
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+ </style>
+</head>
+<body class="font-sans antialiased text-gray-800">
+<!-- Compact Sidebar Navigation -->
+<div class="fixed left-0 top-0 h-[95vh] z-40 hidden md:block mb-4 mt-20">
+  <div class="flex flex-col items-center justify-between h-full px-2 py-6 bg-[#181818] bg-opacity-90 backdrop-blur-sm rounded-r-xl border-r border-[#252525]">
+    <!-- Top Navigation Section -->
+    <div class="flex flex-col items-center space-y-4">
+      <!-- Logo/Brand -->
+      <div class="mb-4 p-2">
+        <i class="fas fa-seedling text-2xl text-green-400"></i>
+      </div>
+      
+      <!-- Main Navigation -->
+      <a href="#" class="group relative p-2 text-yellow-300 hover:text-white transition">
+        <i class="fas fa-home text-lg"></i>
+        <span class="sidebar-tooltip group-hover:scale-100">Home</span>
+      </a>
+      
+      <a href="#about" class="group relative p-2 text-yellow-300 hover:text-white transition">
+        <i class="fas fa-info-circle text-lg"></i>
+        <span class="sidebar-tooltip group-hover:scale-100">About</span>
+      </a>
+      
+      <a href="#services" class="group relative p-2 text-yellow-300 hover:text-white transition">
+        <i class="fas fa-concierge-bell text-lg"></i>
+        <span class="sidebar-tooltip group-hover:scale-100">Services</span>
+      </a>
+    </div>
+    
+    <!-- Middle Navigation Section -->
+    <div class="flex flex-col items-center space-y-4">
+      <a href="#focus-areas" class="group relative p-2 text-yellow-300 hover:text-white transition">
+        <i class="fas fa-bullseye text-lg"></i>
+        <span class="sidebar-tooltip group-hover:scale-100">Focus Areas</span>
+      </a>
+      
+      <a href="#gallery" class="group relative p-2 text-yellow-300 hover:text-white transition">
+        <i class="fas fa-images text-lg"></i>
+        <span class="sidebar-tooltip group-hover:scale-100">Gallery</span>
+      </a>
+      
+      <a href="#stats" class="group relative p-2 text-yellow-300 hover:text-white transition">
+        <i class="fas fa-chart-line text-lg"></i>
+        <span class="sidebar-tooltip group-hover:scale-100">Our Impact</span>
+      </a>
+      
+      <a href="#team" class="group relative p-2 text-yellow-300 hover:text-white transition">
+        <i class="fas fa-users text-lg"></i>
+        <span class="sidebar-tooltip group-hover:scale-100">Our Team</span>
+      </a>
+    </div>
+    
+    <!-- Bottom Navigation Section -->
+    <div class="flex flex-col items-center space-y-4">
+      <a href="#blog" class="group relative p-2 text-yellow-300 hover:text-white transition">
+        <i class="fas fa-blog text-lg"></i>
+        <span class="sidebar-tooltip group-hover:scale-100">Blog</span>
+      </a>
+      
+      <a href="#contact" class="group relative p-2 text-yellow-300 hover:text-white transition">
+        <i class="fas fa-envelope text-lg"></i>
+        <span class="sidebar-tooltip group-hover:scale-100">Contact</span>
+      </a>
+      
+      <a href="#contact" class="group relative p-2 text-yellow-400 hover:text-yellow-300 transition duration-200">
+  <div class="flex items-center justify-center">
+    <!-- Main Icon -->
+    <i class="fas fa-user-plus text-lg group-hover:scale-110 transition-transform duration-200"></i>
+    
+    <!-- Pulse animation (optional) -->
+    <span class="absolute inset-0 rounded-full bg-yellow-400 opacity-0 group-hover:opacity-10 group-hover:animate-pulse"></span>
+  </div>
+  
+  <!-- Tooltip -->
+  <span class="sidebar-tooltip group-hover:scale-100 origin-left">
+    Join Our Community
+    <span class="absolute bottom-full left-1/2 w-2 h-2 -translate-x-1/2 rotate-45 bg-gray-900"></span>
+  </span>
+</a>
+      
+      <!-- Social Media Links -->
+      <div class="flex space-x-3 pt-2">
+        <a href="#" class="text-gray-500 hover:text-blue-400 transition text-sm">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-pink-600 transition text-sm">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="#" class="text-gray-500 hover:text-blue-600 transition text-sm">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-24 items-center">
+            <!-- Logo -->
+            <div class="flex-shrink-0 flex items-center">
+                <img class="h-16" src="https://via.placeholder.com/150x80?text=SABCDA" alt="SABCDA Logo">
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8">
+                <div class="navbar-dropdown group relative">
+                    <button class="text-gray-800 hover:text-yellow-600 px-3 py-2 text-lg font-medium transition duration-300 flex items-center">
+                        About Us <i class="fas fa-chevron-down ml-2 text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-1 w-48 z-50 group-hover:block transition-all duration-200 origin-top">
+                        <a href="#about" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Our Story</a>
+                        <a href="#mission" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Mission & Vision</a>
+                        <a href="#team" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Management Team</a>
+                    </div>
+                </div>
+                
+                <div class="navbar-dropdown group relative">
+                    <button class="text-gray-800 hover:text-yellow-600 px-3 py-2 text-lg font-medium transition duration-300 flex items-center">
+                        Programs <i class="fas fa-chevron-down ml-2 text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-1 w-64 z-50 group-hover:block transition-all duration-200 origin-top">
+                        <a href="#rtbcdm" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">RTBCDM Model</a>
+                        <a href="#spazza" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Spazza Shop Development</a>
+                        <a href="#community" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Community Enterprises</a>
+                        <a href="#business" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Business Forums</a>
+                    </div>
+                </div>
+                
+                <div class="navbar-dropdown group relative">
+                    <button class="text-gray-800 hover:text-yellow-600 px-3 py-2 text-lg font-medium transition duration-300 flex items-center">
+                        Services <i class="fas fa-chevron-down ml-2 text-xs transition-transform duration-200 group-hover:rotate-180"></i>
+                    </button>
+                    <div class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md mt-2 py-1 w-64 z-50 group-hover:block transition-all duration-200 origin-top">
+                        <a href="#services" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Business Consulting</a>
+                        <a href="#training" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Training & Development</a>
+                        <a href="#fundraising" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Fundraising Assistance</a>
+                        <a href="#tender" class="block px-4 py-2 text-gray-800 hover:bg-yellow-50 hover:text-yellow-600">Tendering Support</a>
+                    </div>
+                </div>
+                
+                <a href="#partners" class="text-gray-800 hover:text-yellow-600 px-3 py-2 text-lg font-medium transition duration-300">Partners</a>
+                <a href="#news" class="text-gray-800 hover:text-yellow-600 px-3 py-2 text-lg font-medium transition duration-300">News</a>
+                <a href="#contact" class="text-gray-800 hover:text-yellow-600 px-3 py-2 text-lg font-medium transition duration-300">Contact</a>
+            </div>
+            
+            <!-- CTA Button -->
+            <div class="hidden md:block">
+                <a href="#contact" class="ml-8 whitespace-nowrap inline-flex items-center justify-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                    Join Us
+                </a>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden flex items-center">
+                <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-800 hover:text-yellow-600 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white shadow-lg">
+            <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-yellow-600 hover:bg-yellow-50">About Us</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-yellow-600 hover:bg-yellow-50">Programs</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-yellow-600 hover:bg-yellow-50">Services</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-yellow-600 hover:bg-yellow-50">Partners</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-yellow-600 hover:bg-yellow-50">News</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-800 hover:text-yellow-600 hover:bg-yellow-50">Contact</a>
+            <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-white bg-yellow-600 hover:bg-yellow-700">Join Us</a>
+        </div>
+    </div>
+</nav>
+
+  <!-- Hero Section with Video Background -->
+    <div class="relative h-screen overflow-hidden">
+        
+        <video autoplay loop muted class="absolute z-0 w-auto min-w-full min-h-full max-w-none object-cover">
+            <source src="videos/vid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay absolute inset-0 z-10 flex items-center justify-center">
+            <div class="text-center px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    Building South African <span class="text-yellow-400">Entrepreneurs</span> & <span class="text-yellow-400">Communities</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-white mb-10">
+                    Empowering local businesses, creating jobs, and fostering economic growth through our RTBCDM model
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#rtbcdm" class="px-8 py-4 bg-yellow-600 text-white font-bold rounded-lg hover:bg-yellow-700 transition duration-300 text-lg">
+                        Learn About Our Model
+                    </a>
+                    <a href="#contact" class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-gray-800 transition duration-300 text-lg">
+                        Join Our Network
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-10 left-0 right-0 flex justify-center z-20">
+            <a href="#main-content" class="text-white animate-bounce">
+                <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="bg-gray-50">
+        <!-- Stats Section -->
+       <div class="py-16 bg-yellow-600 text-white relative overflow-hidden">
+    <!-- Animated background elements -->
+    <div class="absolute inset-0 overflow-hidden">
+        <div class="absolute top-0 left-0 w-32 h-32 bg-yellow-500 rounded-full filter blur-3xl opacity-20 animate-float1"></div>
+        <div class="absolute bottom-0 right-0 w-40 h-40 bg-yellow-700 rounded-full filter blur-3xl opacity-20 animate-float2"></div>
+        <div class="absolute top-1/3 right-1/4 w-24 h-24 bg-white rounded-full filter blur-3xl opacity-10 animate-float3"></div>
+    </div>
+    
+    <div id="stats" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <h2 class="text-center text-3xl md:text-4xl font-bold mb-12 tracking-tight">
+            Our <span class="text-yellow-300">Impact</span> in Numbers
+        </h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+            <!-- Stat 1 -->
+            <div class="p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-yellow-300 transition-all duration-500 hover:scale-105 stat-card">
+                <div class="text-5xl md:text-6xl font-bold mb-3 text-yellow-300 counter" data-target="1200">0</div>
+                <div class="text-xl md:text-2xl font-medium">Community Organizations</div>
+                <div class="mt-4 text-sm opacity-80">Empowering local communities nationwide</div>
+            </div>
+            
+            <!-- Stat 2 -->
+            <div class="p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-yellow-300 transition-all duration-500 hover:scale-105 stat-card">
+                <div class="text-5xl md:text-6xl font-bold mb-3 text-yellow-300 counter" data-target="500">0</div>
+                <div class="text-xl md:text-2xl font-medium">Spazza Shops Developed</div>
+                <div class="mt-4 text-sm opacity-80">Transforming small businesses daily</div>
+            </div>
+            
+            <!-- Stat 3 -->
+            <div class="p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-yellow-300 transition-all duration-500 hover:scale-105 stat-card">
+                <div class="text-5xl md:text-6xl font-bold mb-3 text-yellow-300 counter" data-target="2500">0</div>
+                <div class="text-xl md:text-2xl font-medium">Jobs Created</div>
+                <div class="mt-4 text-sm opacity-80">Building sustainable livelihoods</div>
+            </div>
+            
+            <!-- Stat 4 -->
+            <div class="p-6 bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 hover:border-yellow-300 transition-all duration-500 hover:scale-105 stat-card">
+                <div class="text-5xl md:text-6xl font-bold mb-3 text-yellow-300 counter" data-target="9">0</div>
+                <div class="text-xl md:text-2xl font-medium">Provinces Covered</div>
+                <div class="mt-4 text-sm opacity-80">Nationwide reach and impact</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- HTML (Updated) -->
+<button id="backToTop" class="back-to-top" aria-label="Back to Top">
+  ▲
+  <span class="tooltip">Back to Top</span>
+</button>
+        
+<!-- About Page Content -->
+<div id="about" class="bg-white">
+    <!-- Hero Section for About Page -->
+    <div class="relative h-96 overflow-hidden bg-gray-900">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+             alt="Community gathering" 
+             class="w-full h-full object-cover opacity-70">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">About <span class="text-yellow-400">SABCDA</span></h1>
+                <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto">
+                    Building South African aspiring entrepreneurs and small businesses to be corporate entities
+                </p>
+            </div>
+        </div>
+    </div>
+    <!-- Our Story Section -->
+    <div class="py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Our <span class="text-yellow-600">Story</span></h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        The infiltration of rural and township businesses by foreign competitors became a matter of great concern to South African citizens. Daily, business and job opportunities were being lost, while unemployment, poverty, and crime rates continued to rise.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Faced with these challenges and with little assistance from authorities, South African aspiring entrepreneurs, emerging small businesses, and community leaders under the banner of African Renaissance Chamber of Commerce and Industry, led by Masikule Business Consultancy, decided to take action.
+                    </p>
+                    <p class="text-lg text-gray-600">
+                        This collective effort resulted in the development of the <strong>Rural, Township, Business and Community Development Model (RTBCDM)</strong>, which is now being implemented across South Africa to counter these economic challenges and create sustainable opportunities.
+                    </p>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                    <img src="images/story.jpg" 
+                         alt="Community meeting" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">The Birth of RTBCDM</h3>
+                        <p>A model developed by the people, for the people</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mission & Vision Section -->
+    <div id="mission" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our <span class="text-yellow-600">Mission</span> & <span class="text-yellow-600">Vision</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Guiding principles that drive our organization forward
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Mission Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-yellow-500 transform transition duration-500 hover:scale-105">
+                    <div class="flex items-center mb-6">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mr-4">
+                            <i class="fas fa-bullseye text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Our Mission</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        To establish business and community development structures that empower local economies and revive Christian religious values through strategic partnerships.
+                    </p>
+                    <ul class="space-y-3 pl-2">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Establishment of business and community development structures</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Reviving Christian religious values in communities</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Strategic partnerships with local and international organizations</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Vision Card -->
+                <div class="bg-white p-8 rounded-xl shadow-lg border-l-4 border-yellow-500 transform transition duration-500 hover:scale-105">
+                    <div class="flex items-center mb-6">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mr-4">
+                            <i class="fas fa-eye text-xl"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-gray-900">Our Vision</h3>
+                    </div>
+                    <p class="text-gray-600 mb-4">
+                        To build a South Africa that respects the values of each nation, where citizens transfer skills, share opportunities, and create wealth together in the spirit of Ubuntu.
+                    </p>
+                    <ul class="space-y-3 pl-2">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">A country that respects the values of each nation</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Citizens who transfer skills and share opportunities</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">A rainbow nation built on Ubuntu culture</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Our Goals Section -->
+    <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our <span class="text-yellow-600">Goals</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Concrete objectives that guide our daily operations and long-term strategy
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-8 rounded-lg border-t-4 border-yellow-500">
+                    <div class="text-yellow-600 text-4xl font-bold mb-4">01</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Mobilize South Africans</h3>
+                    <p class="text-gray-600">
+                        Uniting all South Africans (black and white) around the common goal of rebuilding the country through economic empowerment.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg border-t-4 border-yellow-500">
+                    <div class="text-yellow-600 text-4xl font-bold mb-4">02</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Integrate Communities</h3>
+                    <p class="text-gray-600">
+                        Connecting rural and township communities with the main economic development streams of the country.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg border-t-4 border-yellow-500">
+                    <div class="text-yellow-600 text-4xl font-bold mb-4">03</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Develop Entrepreneurs</h3>
+                    <p class="text-gray-600">
+                        Recruiting and developing aspiring entrepreneurs, small business people, and community leaders to become independent contractors.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg border-t-4 border-yellow-500">
+                    <div class="text-yellow-600 text-4xl font-bold mb-4">04</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Create Community Enterprises</h3>
+                    <p class="text-gray-600">
+                        Establishing and developing Community Owned Enterprises that generate sustainable jobs and wealth opportunities.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg border-t-4 border-yellow-500">
+                    <div class="text-yellow-600 text-4xl font-bold mb-4">05</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Eradicate Poverty & Crime</h3>
+                    <p class="text-gray-600">
+                        Creating economic opportunities that directly address poverty reduction and crime prevention.
+                    </p>
+                </div>
+                
+                <div class="bg-gray-50 p-8 rounded-lg border-t-4 border-yellow-500">
+                    <div class="text-yellow-600 text-4xl font-bold mb-4">06</div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-4">Preserve Business Space</h3>
+                    <p class="text-gray-600">
+                        Protecting the small business space for future generations of South African entrepreneurs.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Management Team Section -->
+    <div id="team" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our <span class="text-yellow-600">Management Team</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    The dedicated professionals implementing the RTBCDM across South Africa
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <!-- Team Member 1 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center">
+                        <img src="images/elsimage.jpg" alt="Team member" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Principal Service Provider</h3>
+                        <p class="text-gray-600 mb-4">National Leadership</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-500 hover:text-yellow-600">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-yellow-600">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center">
+                        <img src="images/jairo.jpg" alt="Team member" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Main Service Provider</h3>
+                        <p class="text-gray-600 mb-4">Regional Coordination</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-500 hover:text-yellow-600">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-yellow-600">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center">
+                        <img src="images/mwabonje-.jpg" alt="Team member" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Block Service Provider</h3>
+                        <p class="text-gray-600 mb-4">Local Implementation</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-500 hover:text-yellow-600">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-yellow-600">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="bg-white rounded-lg overflow-hidden shadow-md transition duration-300 transform hover:-translate-y-2 hover:shadow-xl">
+                    <div class="h-64 bg-gray-200 flex items-center justify-center">
+                        <img src="images/mikhail.jpg" alt="Team member" class="h-full w-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-1">Area Facilitator</h3>
+                        <p class="text-gray-600 mb-4">Community Engagement</p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="text-gray-500 hover:text-yellow-600">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="text-gray-500 hover:text-yellow-600">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Team Structure Info -->
+            <div class="mt-16 bg-white p-8 rounded-xl shadow-lg">
+                <h3 class="text-2xl font-bold text-gray-900 mb-6">Our Organizational Structure</h3>
+                <p class="text-gray-600 mb-6">
+                    SABCDA operates through a structured network of service providers at different levels to ensure effective implementation of the RTBCDM across South Africa:
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Principal Service Providers</strong> - National leadership</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Main Service Providers</strong> - Regional coordination</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>National Service Providers</strong> - Countrywide implementation</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Block Service Providers</strong> - Provincial coordination</p>
+                        </li>
+                    </ul>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Metropolitan/District Service Providers</strong> - Local government areas</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Area Facilitators</strong> - Community-level engagement</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Service Centers</strong> - Operational hubs</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-5 w-5 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Agents & Clients</strong> - Grassroots implementation</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- About Section -->
+        
+<!-- Programs Page Content -->
+<div class="bg-white">
+    <!-- Breadcrumb Navigation -->
+    <div class="bg-gray-100 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-4">
+                    <li>
+                        <div>
+                            <a href="#" class="text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-home"></i>
+                                <span class="sr-only">Home</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+    <!-- Hero Section for Programs Page -->
+    <div id="model" class="relative h-96 overflow-hidden bg-gray-900">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+             alt="Business meeting" 
+             class="w-full h-full object-cover opacity-70">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Our <span class="text-yellow-400">Programs</span></h1>
+                <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto">
+                    Transforming communities through sustainable economic development initiatives
+                </p>
+            </div>
+        </div>
+    </div>
+
+        <!-- Programs Section with Sliding Cards -->
+       <div class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Comprehensive initiatives designed to create <span class="text-yellow-600">sustainable businesses and community development structures.</span></h2>
+            </p>
+        </div>
+        
+        <!-- Sliding Cards -->
+        <div class="space-y-16">
+            <!-- Card 1 - Community Shops -->
+            <div class="slide-in-left">
+                <div class="card-container">
+                    <div class="card-main card-hover-effect grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-xl overflow-hidden shadow-lg transition duration-300 transform">
+                        <div class="h-96">
+                            <img src="images/shop.jpg">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Community Shops Establishment</h3>
+                            <p class="text-gray-600 mb-6">
+                                Developing local spazza shops into sustainable businesses that serve as distribution points for quality products while preserving the small business space for future generations.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Twelve ward spazza shops developed as agents and distributors</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Access to Zenzele Wholesale for bulk buying</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Business mentorship and training programs</span>
+                                </li>
+                            </ul>
+                            <button class="learn-more-btn inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                                Learn More
+                                <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Expanded Content -->
+                    <div class="card-expanded hidden bg-gray-50 p-8 rounded-b-xl border-t border-gray-200">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-4">Implementation Process</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Our Community Shops program follows a structured 6-month implementation process:
+                                </p>
+                                <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                                    <li>Community needs assessment and shop selection</li>
+                                    <li>Business registration and compliance setup</li>
+                                    <li>Inventory management system implementation</li>
+                                    <li>Owner training and mentorship program</li>
+                                    <li>Supply chain integration with Zenzele Wholesale</li>
+                                    <li>Ongoing monitoring and support</li>
+                                </ol>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-4">Success Metrics</h4>
+                                <div class="space-y-4">
+                                    <div>
+                                        <p class="font-semibold text-gray-800">Revenue Growth</p>
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-1">
+                                            <div class="bg-yellow-600 h-2.5 rounded-full" style="width: 78%"></div>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-1">Average 78% increase in monthly revenue</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-800">Job Creation</p>
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-1">
+                                            <div class="bg-yellow-600 h-2.5 rounded-full" style="width: 65%"></div>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-1">65% of shops hired at least 1 additional employee</p>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-800">Community Impact</p>
+                                        <div class="w-full bg-gray-200 rounded-full h-2.5 mt-1">
+                                            <div class="bg-yellow-600 h-2.5 rounded-full" style="width: 92%"></div>
+                                        </div>
+                                        <p class="text-sm text-gray-600 mt-1">92% of community members report improved access to goods</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="close-expanded mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-yellow-700 bg-yellow-100 hover:bg-yellow-200 transition duration-300">
+                            Close Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 2 - Business Forums -->
+            <div class="slide-in-right">
+                <div class="card-container">
+                    <div class="card-main card-hover-effect grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-xl overflow-hidden shadow-lg transition duration-300 transform">
+                        <div class="h-96 md:order-last">
+                            <img src="images/jean.jpg">
+                        </div>
+                        <div class="p-8 md:order-first">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Business & Community Development Forums</h3>
+                            <p class="text-gray-600 mb-6">
+                                Establishing platforms for local entrepreneurs and community leaders to collaborate, share knowledge, and access development opportunities through structured forums.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Weekly business and jobs opportunity presentations</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Monthly three-day development seminars</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Regular outreach programs and exhibitions</span>
+                                </li>
+                            </ul>
+                            <button class="learn-more-btn inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                                Learn More
+                                <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Expanded Content -->
+                    <div class="card-expanded hidden bg-gray-50 p-8 rounded-b-xl border-t border-gray-200">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-4">Forum Structure</h4>
+                                <p class="text-gray-600 mb-4">
+                                    Our Business & Community Development Forums operate on a tiered structure:
+                                </p>
+                                <ul class="space-y-3 text-gray-700">
+                                    <li class="flex items-start">
+                                        <svg class="flex-shrink-0 h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span><strong>Weekly Meetups:</strong> Local networking and opportunity sharing</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="flex-shrink-0 h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span><strong>Monthly Seminars:</strong> Deep-dive training sessions</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="flex-shrink-0 h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span><strong>Quarterly Summits:</strong> Regional collaboration events</span>
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="flex-shrink-0 h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                        </svg>
+                                        <span><strong>Annual Conference:</strong> National best practice sharing</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-4">Recent Forum Topics</h4>
+                                <div class="space-y-4">
+                                    <div class="p-4 bg-white rounded-lg shadow">
+                                        <p class="font-semibold text-yellow-600">Digital Marketing for Small Businesses</p>
+                                        <p class="text-sm text-gray-600">Presented by Google South Africa</p>
+                                    </div>
+                                    <div class="p-4 bg-white rounded-lg shadow">
+                                        <p class="font-semibold text-yellow-600">Accessing Government Tenders</p>
+                                        <p class="text-sm text-gray-600">Workshop by Department of Small Business Development</p>
+                                    </div>
+                                    <div class="p-4 bg-white rounded-lg shadow">
+                                        <p class="font-semibold text-yellow-600">Financial Management Fundamentals</p>
+                                        <p class="text-sm text-gray-600">Training by Standard Bank Business Banking</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="close-expanded mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-yellow-700 bg-yellow-100 hover:bg-yellow-200 transition duration-300">
+                            Close Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Card 3 - Independent Contractors -->
+            <div class="slide-in-left">
+                <div class="card-container">
+                    <div class="card-main card-hover-effect grid grid-cols-1 md:grid-cols-2 gap-8 items-center bg-white rounded-xl overflow-hidden shadow-lg transition duration-300 transform">
+                        <div class="h-96">
+                            <img src="images/nilov.jpg">
+                        </div>
+                        <div class="p-8">
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">Independent Contractors & Service Providers Development</h3>
+                            <p class="text-gray-600 mb-6">
+                                Recruiting and developing aspiring entrepreneurs, small business owners, and community leaders to become independent contractors and service providers within their communities.
+                            </p>
+                            <ul class="space-y-3 mb-8">
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Business skills training and compliance facilitation</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Corporate branding and social media marketing assistance</span>
+                                </li>
+                                <li class="flex items-center">
+                                    <svg class="h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Equipment and machinery facilitation</span>
+                                </li>
+                            </ul>
+                            <button class="learn-more-btn inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                                Learn More
+                                <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Expanded Content -->
+                    <div class="card-expanded hidden bg-gray-50 p-8 rounded-b-xl border-t border-gray-200">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-4">Development Pathways</h4>
+                                <p class="text-gray-600 mb-4">
+                                    We offer three specialized development pathways for independent contractors:
+                                </p>
+                                <div class="space-y-4">
+                                    <div class="p-4 bg-white rounded-lg shadow">
+                                        <p class="font-semibold text-yellow-600">Technical Services</p>
+                                        <p class="text-sm text-gray-600">Plumbers, electricians, builders, and other trades</p>
+                                    </div>
+                                    <div class="p-4 bg-white rounded-lg shadow">
+                                        <p class="font-semibold text-yellow-600">Professional Services</p>
+                                        <p class="text-sm text-gray-600">Consultants, marketers, IT professionals</p>
+                                    </div>
+                                    <div class="p-4 bg-white rounded-lg shadow">
+                                        <p class="font-semibold text-yellow-600">Community Services</p>
+                                        <p class="text-sm text-gray-600">Childcare, eldercare, community health workers</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold text-gray-900 mb-4">Success Stories</h4>
+                                <div class="space-y-4">
+                                    <div class="p-4 bg-white rounded-lg shadow">
+                                        <p class="font-semibold">Thando's Plumbing</p>
+                                        <p class="text-sm text-gray-600">Started with basic tools, now employs 5 technicians and has municipal contracts</p>
+                                    </div>
+                                    <div class="p-4 bg-white rounded-lg shadow">
+                                        <p class="font-semibold">MaKhumalo Catering</p>
+                                        <p class="text-sm text-gray-600">From home kitchen to supplying 3 corporate cafeterias</p>
+                                    </div>
+                                    <div class="p-4 bg-white rounded-lg shadow">
+                                        <p class="font-semibold">Digital Roots</p>
+                                        <p class="text-sm text-gray-600">Community IT support now managing websites for 12 local businesses</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button class="close-expanded mt-6 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-yellow-700 bg-yellow-100 hover:bg-yellow-200 transition duration-300">
+                            Close Details
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- RTBCDM Model Section -->
+    <div id="rtbcdm" class="py-20 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+            <div class="mb-12 lg:mb-0">
+                <span class="inline-block px-3 py-1 text-sm font-semibold text-yellow-800 bg-yellow-200 rounded-full mb-4">Flagship Program</span>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Rural, Township, Business and Community Development Model <span class="text-yellow-600">(RTBCDM)</span></h2>
+                <p class="text-lg text-gray-600 mb-6">
+                    Our comprehensive framework for economic empowerment addresses the unique challenges faced by South African communities through a multi-pronged approach.
+                </p>
+                <div class="space-y-4 mb-8">
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="ml-3 text-gray-700"><strong>Holistic Approach:</strong> Combines business development with community empowerment</p>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="ml-3 text-gray-700"><strong>Scalable Model:</strong> Implemented through district/metropolitan structures</p>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="flex-shrink-0 mt-1">
+                            <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+                        <p class="ml-3 text-gray-700"><strong>Proven Success:</strong> Currently operational in the City of Johannesburg Metropolitan</p>
+                    </div>
+                </div>
+                <a href="#rtbcdm-details" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                    Learn About Implementation
+                    <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                    </svg>
+                </a>
+            </div>
+            <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                     alt="Community development" 
+                     class="w-full h-full object-cover">
+                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                <div class="absolute bottom-0 left-0 p-6 text-white">
+                    <h3 class="text-xl font-bold mb-2">RTBCDM in Action</h3>
+                    <p>Creating sustainable opportunities in townships and rural areas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Expanded Details Section -->
+        <div id="rtbcdm-details" class="mt-16 pt-16 border-t border-gray-200">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Deeper Dive into RTBCDM</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        The RTBCDM model has been carefully designed to create sustainable impact through these key components:
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Community Engagement:</strong> Local stakeholders are involved at every stage of development</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Capacity Building:</strong> Training programs for entrepreneurs and local leaders</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Resource Mobilization:</strong> Connecting communities with funding and technical resources</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900 transition duration-300">
+                        Contact Us for Implementation
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                    <img src="images/comm.jpg" 
+                         alt="Community meeting" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Community Partnerships</h3>
+                        <p>Working together to build sustainable local economies</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Spazza Shop Development Section -->
+    <div id="spazza" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"><span class="text-yellow-600">Spazza Shop</span> Development Program</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Preserving the small business space for future generations of South African entrepreneurs
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div class="order-last md:order-first">
+                    <div class="relative rounded-xl overflow-hidden shadow-lg h-96">
+                        <img src="images/tiger.jpg" 
+                             alt="Spazza shop" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Zenzele Wholesale</h3>
+                            <p>Supporting local spazza shops with bulk buying power</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Transforming Informal Trade</h3>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our Spazza Shop Development Program addresses the economic challenges faced by local small businesses competing with foreign-owned enterprises. Through this initiative, we:
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Develop twelve ward spazza shops as agents and distributors</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Provide access to Zenzele Wholesale for bulk buying facilitation</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Offer comprehensive mentorship services including business skills training</p>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                        Join Spazza Program
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Mentorship Services -->
+            <div class="bg-yellow-50 rounded-xl p-8 md:p-12 shadow-inner">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">Spazza Shops <span class="text-yellow-600">Mentorship Services</span></h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-graduation-cap text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Business Skills Training</h4>
+                        <p class="text-gray-600">Essential training for spazza shop owners to manage and grow their businesses</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-file-contract text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Compliance Facilitation</h4>
+                        <p class="text-gray-600">Assistance with all regulatory requirements and business documentation</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-bullhorn text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Social Media Marketing</h4>
+                        <p class="text-gray-600">Guidance on leveraging digital platforms to increase customer reach</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-boxes text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Bulk Buying Facilitation</h4>
+                        <p class="text-gray-600">Access to wholesale purchasing through Zenzele Wholesale</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-piggy-bank text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Savings & Investment</h4>
+                        <p class="text-gray-600">Financial planning services to help grow business capital</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-book text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Bookkeeping Services</h4>
+                        <p class="text-gray-600">Professional support for maintaining accurate financial records</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Community Enterprise Section -->
+    <div id="community" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"><span class="text-yellow-600">Community Owned</span> Enterprise Program</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Creating sustainable businesses that are owned by and benefit local communities
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Collective Ownership, Collective Benefit</h3>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our Community Owned Enterprise program establishes businesses that are owned and operated by community members, ensuring that profits stay within the local economy.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Local Empowerment:</strong> Businesses are owned by community development organizations</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Job Creation:</strong> Provides sustainable employment opportunities for community members</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Wealth Retention:</strong> Keeps financial resources circulating within the community</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                        Start a Community Enterprise
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                    <img src="images/store.jpg" 
+                         alt="Community enterprise" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Community Shop</h3>
+                        <p>A successful community-owned retail outlet in Johannesburg</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Enterprise Types -->
+            <div class="mt-16">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Types of <span class="text-yellow-600">Community Enterprises</span></h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-yellow-500">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Retail & Distribution</h4>
+                        <p class="text-gray-600">Community shops and distribution networks for essential goods</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-yellow-500">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Service Providers</h4>
+                        <p class="text-gray-600">Businesses offering services like printing, repairs, and maintenance</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300 border-t-4 border-yellow-500">
+                        <h4 class="text-lg font-bold text-gray-900 mb-3">Manufacturing</h4>
+                        <p class="text-gray-600">Small-scale production of goods for local and regional markets</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Business Forums Section -->
+    <div id="business" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4"><span class="text-yellow-600">Business & Community</span> Development Forums</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Platforms for collaboration, knowledge sharing, and collective problem solving
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center mb-16">
+                <div class="order-last md:order-first">
+                    <div class="relative rounded-xl overflow-hidden shadow-lg h-96">
+                        <img src="images/divinetechygirl-.jpg" 
+                             alt="Business forum meeting" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-70"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Weekly Forum Meeting</h3>
+                            <p>Entrepreneurs and community leaders sharing ideas</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Connecting Entrepreneurs & Leaders</h3>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our Business and Community Development Forums bring together local entrepreneurs, small business owners, and community leaders to:
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Share business opportunities and challenges</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Access training and development sessions</p>
+                        </li>
+                        <li class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700">Develop collective solutions to community challenges</p>
+                        </li>
+                    </ul>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                        Find a Forum Near You
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Forum Schedule -->
+            <div class="bg-yellow-50 rounded-xl p-8 md:p-12 shadow-inner">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">Forum <span class="text-yellow-600">Schedule</span></h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-yellow-100">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-yellow-800 uppercase tracking-wider">Day</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-yellow-800 uppercase tracking-wider">Focus Area</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-yellow-800 uppercase tracking-wider">Time</th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Monday</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">Business & Jobs Opportunity Presentations</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">10:00 - 12:00</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Tuesday</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">Construction & Distribution Development</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">14:00 - 16:00</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Thursday</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">Basic Bookkeeping & Fundraising</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">10:00 - 12:00</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">Weekends</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">Outreaches, Seminars & Exhibitions</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-gray-600">Various Times</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Services Page Content -->
+<div id="services" class="bg-white">
+    <!-- Hero Section for Services Page -->
+    <div class="relative h-96 overflow-hidden bg-gray-900">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+             alt="Consulting meeting" 
+             class="w-full h-full object-cover opacity-70">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Our <span class="text-yellow-400">Services</span></h1>
+                <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto">
+                    Comprehensive support to empower businesses and community organizations
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="bg-gray-100 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-4">
+                    <li>
+                        <div>
+                            <a href="#" class="text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-home"></i>
+                                <span class="sr-only">Home</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Services Overview -->
+    <div id="consulting" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Empowering <span class="text-yellow-600">Business Growth</span> & <span class="text-yellow-600">Community Development</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Our comprehensive services are designed to address the unique challenges faced by South African entrepreneurs and community organizations
+                </p>
+            </div>
+            
+           
+    <!-- Detailed Services Sections -->
+    <!-- Business Consulting Detail -->
+    <div id="consulting" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <span class="inline-block px-3 py-1 text-sm font-semibold text-yellow-800 bg-yellow-200 rounded-full mb-4">Core Service</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Business <span class="text-yellow-600">Consulting</span></h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our expert consultants provide comprehensive guidance to help your business or community organization establish, grow, and comply with all regulatory requirements.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Compliance Services:</strong> Ensure your business meets all legal requirements (R500 once-off fee)</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Corporate Branding:</strong> Professional branding and marketing assistance (R500 once-off fee)</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Document Preparation:</strong> Professional drafting of business documents (R500 once-off fee)</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                        Request Consultation
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                    <img src="images/techygir.jpg" 
+                         alt="Business consultation" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Expert Guidance</h3>
+                        <p>One-on-one consulting sessions tailored to your needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Training & Development Detail -->
+    <div id="training" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="order-last md:order-first mb-12 lg:mb-0">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                        <img src="images/fotografias.jpg" 
+                             alt="Training session" 
+                             class="w-full h-full object-cover mt-12">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Skills Development</h3>
+                            <p>Practical training for entrepreneurs and community leaders</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="inline-block px-3 py-1 text-sm font-semibold text-yellow-800 bg-yellow-200 rounded-full mb-4">Capacity Building</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Training & <span class="text-yellow-600">Development</span></h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our comprehensive training programs equip entrepreneurs and community leaders with practical skills to grow their businesses and organizations.
+                    </p>
+                    <div class="grid md:grid-cols-2 gap-6 mb-8">
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-gray-900 mb-2 flex items-center">
+                                <svg class="h-5 w-5 text-yellow-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                Weekly Sessions
+                            </h4>
+                            <p class="text-gray-600 text-sm">Monday, Wednesday, Friday business training</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-gray-900 mb-2 flex items-center">
+                                <svg class="h-5 w-5 text-yellow-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                Specialized Training
+                            </h4>
+                            <p class="text-gray-600 text-sm">Thursday bookkeeping & fundraising</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-gray-900 mb-2 flex items-center">
+                                <svg class="h-5 w-5 text-yellow-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                Practical Workshops
+                            </h4>
+                            <p class="text-gray-600 text-sm">Hands-on business skills development</p>
+                        </div>
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-bold text-gray-900 mb-2 flex items-center">
+                                <svg class="h-5 w-5 text-yellow-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                                </svg>
+                                Awareness Programs
+                            </h4>
+                            <p class="text-gray-600 text-sm">Community outreach and education</p>
+                        </div>
+                    </div>
+                    <a href="#" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                        View Training Schedule
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Fundraising Assistance Detail -->
+    <div id="fundraising" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="mb-12 lg:mb-0">
+                    <span class="inline-block px-3 py-1 text-sm font-semibold text-yellow-800 bg-yellow-200 rounded-full mb-4">Financial Support</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Fundraising <span class="text-yellow-600">Assistance</span></h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        We provide multiple avenues for financial support to help businesses and individuals overcome economic challenges and grow sustainably.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="font-bold text-gray-900 mb-2">Emergency Loans</h4>
+                            <p class="text-gray-600 mb-2">Access up to R1000 at 10% interest for urgent financial needs</p>
+                            <p class="text-sm text-gray-500">Processing within 24 hours</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="font-bold text-gray-900 mb-2">Short-term Loans</h4>
+                            <p class="text-gray-600 mb-2">Borrow up to R10,000 for business growth opportunities</p>
+                            <p class="text-sm text-gray-500">Flexible repayment terms</p>
+                        </div>
+                        <div class="bg-white p-6 rounded-lg shadow-md">
+                            <h4 class="font-bold text-gray-900 mb-2">Funding Facilitation</h4>
+                            <p class="text-gray-600 mb-2">Assistance connecting with financial institutions and investors</p>
+                            <p class="text-sm text-gray-500">Personal, business and organizational funding</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                        Apply for Funding
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                    <img src="images/cottonbro.jpg" 
+                         alt="Financial discussion" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Financial Solutions</h3>
+                        <p>Tailored to your specific business needs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tendering Support Detail -->
+    <div id="tender" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
+                <div class="order-last md:order-first mb-12 lg:mb-0">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                        <img src="images/tender.jpg" 
+                             alt="Tender documents" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-xl font-bold mb-2">Tender Success</h3>
+                            <p>Professional support through the bidding process</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <span class="inline-block px-3 py-1 text-sm font-semibold text-yellow-800 bg-yellow-200 rounded-full mb-4">Business Growth</span>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Tendering <span class="text-yellow-600">Support</span></h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Our tendering assistance services help small businesses navigate the complex world of government and corporate procurement opportunities.
+                    </p>
+                    <div class="space-y-4 mb-8">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Tender Documentation:</strong> Professional preparation of all required documents (R500 once-off fee)</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Bid Analysis:</strong> Expert review of tender specifications and requirements</p>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 mt-1">
+                                <div class="flex items-center justify-center h-6 w-6 rounded-full bg-yellow-100 text-yellow-600">
+                                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                </div>
+                            </div>
+                            <p class="ml-3 text-gray-700"><strong>Compliance Check:</strong> Ensure your submission meets all criteria</p>
+                        </div>
+                    </div>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                        Get Tender Support
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Service Benefits Section -->
+    <div class="py-20 bg-yellow-600 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Service <span class="text-white">Benefits</span></h2>
+                <p class="text-xl max-w-3xl mx-auto">
+                    How our services create value for entrepreneurs and community organizations
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-sm">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-white bg-opacity-20 text-white mb-6 mx-auto">
+                        <i class="fas fa-chart-line text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center">Business Growth</h3>
+                    <p class="text-center">
+                        Our services are designed to help your business or organization grow sustainably and compete effectively in the marketplace.
+                    </p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-sm">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-white bg-opacity-20 text-white mb-6 mx-auto">
+                        <i class="fas fa-users text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center">Community Impact</h3>
+                    <p class="text-center">
+                        By strengthening local businesses and organizations, we create jobs and opportunities that benefit entire communities.
+                    </p>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-sm">
+                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-white bg-opacity-20 text-white mb-6 mx-auto">
+                        <i class="fas fa-hand-holding-heart text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4 text-center">Financial Support</h3>
+                    <p class="text-center">
+                        Access to funding and financial services helps overcome barriers to growth and sustainability.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="py-20 bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Access Our Services?</h2>
+            <p class="text-xl mb-10 max-w-3xl mx-auto">
+                Whether you need business consulting, training, funding, or tendering support, our team is ready to help you succeed.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+            
+                <a href="#contact" class="px-8 py-4 bg-transparent border-2 border-white text-white font-bold rounded-lg hover:bg-white hover:text-gray-900 transition duration-300 text-lg">
+                    Contact Our Team
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+   
+<!-- Partners Page Content -->
+<div class="bg-white">
+    <!-- Hero Section for Partners Page -->
+    <div class="relative h-96 overflow-hidden bg-gray-900">
+        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+             alt="Partners shaking hands" 
+             class="w-full h-full object-cover opacity-70">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Our <span class="text-yellow-400">Partners</span></h1>
+                <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto">
+                    Strategic alliances that amplify our community impact
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="bg-gray-100 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-4">
+                    <li>
+                        <div>
+                            <a href="#" class="text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-home"></i>
+                                <span class="sr-only">Home</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Partners Introduction -->
+    <div id="partners" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Strategic <span class="text-yellow-600">Partnerships</span></h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    We collaborate with organizations across sectors to maximize our impact in community development
+                </p>
+            </div>
+            
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16 items-center mb-16">
+                <div class="mb-12 lg:mb-0">
+                    <h3 class="text-2xl font-bold text-gray-900 mb-6">Building Strong Alliances</h3>
+                    <p class="text-lg text-gray-600 mb-6">
+                        SABCDA recognizes that sustainable community development requires collaboration across sectors. Our partners include government agencies, private sector corporations, development institutions, and community-based organizations.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Through these strategic partnerships, we're able to leverage resources, share expertise, and create opportunities that no single organization could achieve alone.
+                    </p>
+                    <a href="#contact" class="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 transition duration-300">
+                        Become a Partner
+                        <svg class="ml-2 -mr-1 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="relative rounded-xl overflow-hidden shadow-2xl h-96">
+                    <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                         alt="Partnership meeting" 
+                         class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                    <div class="absolute bottom-0 left-0 p-6 text-white">
+                        <h3 class="text-xl font-bold mb-2">Partnership in Action</h3>
+                        <p>Collaborating for community development</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Partners Grid -->
+            <div class="mb-16">
+                <h3 class="text-2xl font-bold text-gray-900 mb-8 text-center">Our <span class="text-yellow-600">Partners</span></h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+                    <div class="bg-white p-8 rounded-xl shadow-md flex items-center justify-center h-40 hover:shadow-lg transition duration-300">
+                        <img src="https://via.placeholder.com/150x80?text=Government" alt="Government Partner" class="max-h-16">
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md flex items-center justify-center h-40 hover:shadow-lg transition duration-300">
+                        <img src="https://via.placeholder.com/150x80?text=Corporate" alt="Corporate Partner" class="max-h-16">
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md flex items-center justify-center h-40 hover:shadow-lg transition duration-300">
+                        <img src="https://via.placeholder.com/150x80?text=Development" alt="Development Partner" class="max-h-16">
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md flex items-center justify-center h-40 hover:shadow-lg transition duration-300">
+                        <img src="https://via.placeholder.com/150x80?text=Financial" alt="Financial Partner" class="max-h-16">
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md flex items-center justify-center h-40 hover:shadow-lg transition duration-300">
+                        <img src="https://via.placeholder.com/150x80?text=Community" alt="Community Partner" class="max-h-16">
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md flex items-center justify-center h-40 hover:shadow-lg transition duration-300">
+                        <img src="https://via.placeholder.com/150x80?text=Education" alt="Education Partner" class="max-h-16">
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md flex items-center justify-center h-40 hover:shadow-lg transition duration-300">
+                        <img src="https://via.placeholder.com/150x80?text=Religious" alt="Religious Partner" class="max-h-16">
+                    </div>
+                    <div class="bg-white p-8 rounded-xl shadow-md flex items-center justify-center h-40 hover:shadow-lg transition duration-300">
+                        <img src="https://via.placeholder.com/150x80?text=International" alt="International Partner" class="max-h-16">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Partnership Benefits -->
+            <div class="bg-yellow-50 rounded-xl p-8 md:p-12 shadow-inner">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-8 text-center">Partnership <span class="text-yellow-600">Benefits</span></h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-bullseye text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Amplified Impact</h4>
+                        <p class="text-gray-600">Combine resources and expertise to create greater community transformation</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-network-wired text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Network Access</h4>
+                        <p class="text-gray-600">Connect with our extensive network of community organizations and businesses</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-chart-line text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Market Opportunities</h4>
+                        <p class="text-gray-600">Access new markets through our community distribution networks</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-users text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">CSR Fulfillment</h4>
+                        <p class="text-gray-600">Achieve your corporate social responsibility objectives through meaningful programs</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-lightbulb text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Innovation</h4>
+                        <p class="text-gray-600">Co-create innovative solutions to community challenges</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+                        <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600 mb-4">
+                            <i class="fas fa-medal text-xl"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-gray-900 mb-2">Recognition</h4>
+                        <p class="text-gray-600">Gain visibility as a leader in community development</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- News Page Content -->
+<div id="news" class="bg-white">
+    <!-- Hero Section for News Page -->
+    <div class="relative h-96 overflow-hidden bg-gray-900">
+        <img src="https://images.unsplash.com/photo-1585829365295-ab7cd400c167?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+             alt="Newspapers" 
+             class="w-full h-full object-cover opacity-70">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">News & <span class="text-yellow-400">Updates</span></h1>
+                <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto">
+                    Stay informed about our latest initiatives and success stories
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="bg-gray-100 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-4">
+                    <li>
+                        <div>
+                            <a href="#" class="text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-home"></i>
+                                <span class="sr-only">Home</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+   
+    <!-- News Section -->
+<div class="grid md:grid-cols-3 gap-8 mb-12 m-16">
+    <!-- News Item 1 -->
+    <div class="news-card-container bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-2">
+        <div class="news-card-main">
+            <div class="h-48 bg-gray-200 flex items-center justify-center">
+                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                     alt="News image" 
+                     class="h-full w-full object-cover">
+            </div>
+            <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-2">
+                    <span>June 15, 2025</span>
+                    <span class="mx-2">•</span>
+                    <span>Program Update</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">50 New Spazza Shops Launched in Gauteng</h3>
+                <p class="text-gray-600 mb-4">
+                    Our Spazza Shop Development Program has expanded to 50 new locations across Gauteng, creating over 200 jobs...
+                </p>
+                <button class="read-more-btn inline-flex items-center text-yellow-600 hover:text-yellow-700 font-medium">
+                    Read More
+                    <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Expanded Content -->
+        <div class="news-card-expanded hidden p-6 bg-gray-50 border-t border-gray-200">
+            <h4 class="font-bold text-gray-900 mb-3">Full Story Details</h4>
+            <p class="text-gray-600 mb-4">
+                The Spazza Shop Development Program has successfully launched 50 new locations across Gauteng province, 
+                with a focus on townships in Johannesburg, Pretoria, and Ekurhuleni. This expansion has created 217 
+                permanent jobs and provides business opportunities for local entrepreneurs.
+            </p>
+            <div class="grid grid-cols-2 gap-4 mb-4">
+                <div class="bg-white p-3 rounded-lg shadow-sm">
+                    <p class="text-sm font-medium text-gray-500">Locations</p>
+                    <p class="text-lg font-bold text-yellow-600">50</p>
+                </div>
+                <div class="bg-white p-3 rounded-lg shadow-sm">
+                    <p class="text-sm font-medium text-gray-500">Jobs Created</p>
+                    <p class="text-lg font-bold text-yellow-600">217</p>
+                </div>
+            </div>
+            <p class="text-gray-600 mb-4">
+                Each shop receives comprehensive support including business training, inventory management systems, 
+                and access to wholesale purchasing through our Zenzele Wholesale partnership.
+            </p>
+            <button class="close-expanded-btn text-sm text-yellow-600 hover:text-yellow-700 font-medium">
+                Close Story
+            </button>
+        </div>
+    </div>
+    
+    <!-- News Item 2 -->
+    <div class="news-card-container bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-2">
+        <div class="news-card-main">
+            <div class="h-48 bg-gray-200 flex items-center justify-center">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                     alt="News image" 
+                     class="h-full w-full object-cover">
+            </div>
+            <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-2">
+                    <span>May 28, 2025</span>
+                    <span class="mx-2">•</span>
+                    <span>Partnership</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">New Partnership with Major Retailer Announced</h3>
+                <p class="text-gray-600 mb-4">
+                    SABCDA has formed a strategic partnership with a major South African retailer to supply products to community shops...
+                </p>
+                <button class="read-more-btn inline-flex items-center text-yellow-600 hover:text-yellow-700 font-medium">
+                    Read More
+                    <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Expanded Content -->
+        <div class="news-card-expanded hidden p-6 bg-gray-50 border-t border-gray-200">
+            <h4 class="font-bold text-gray-900 mb-3">Partnership Details</h4>
+            <p class="text-gray-600 mb-4">
+                We're proud to announce our new partnership with ShopRight, one of South Africa's largest retail chains. 
+                This 3-year agreement will provide our community shops with access to over 200 high-demand products at 
+                wholesale prices, with special discounts for our members.
+            </p>
+            <ul class="space-y-2 mb-4">
+                <li class="flex items-start">
+                    <svg class="flex-shrink-0 h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>200+ products available at wholesale prices</span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="flex-shrink-0 h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Exclusive 5% additional discount for SABCDA members</span>
+                </li>
+                <li class="flex items-start">
+                    <svg class="flex-shrink-0 h-5 w-5 text-yellow-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                    <span>Weekly delivery services to all participating shops</span>
+                </li>
+            </ul>
+            <button class="close-expanded-btn text-sm text-yellow-600 hover:text-yellow-700 font-medium">
+                Close Story
+            </button>
+        </div>
+    </div>
+    
+    <!-- News Item 3 -->
+    <div class="news-card-container bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition duration-300 transform hover:-translate-y-2">
+        <div class="news-card-main">
+            <div class="h-48 bg-gray-200 flex items-center justify-center">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                     alt="News image" 
+                     class="h-full w-full object-cover">
+            </div>
+            <div class="p-6">
+                <div class="flex items-center text-sm text-gray-500 mb-2">
+                    <span>May 10, 2025</span>
+                    <span class="mx-2">•</span>
+                    <span>Success Story</span>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900 mb-3">Community Enterprise Creates 30 Jobs in Eastern Cape</h3>
+                <p class="text-gray-600 mb-4">
+                    A community-owned enterprise supported by SABCDA has created 30 sustainable jobs in a rural Eastern Cape community...
+                </p>
+                <button class="read-more-btn inline-flex items-center text-yellow-600 hover:text-yellow-700 font-medium">
+                    Read More
+                    <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Expanded Content -->
+        <div class="news-card-expanded hidden p-6 bg-gray-50 border-t border-gray-200">
+            <h4 class="font-bold text-gray-900 mb-3">Success Story Details</h4>
+            <p class="text-gray-600 mb-4">
+                The Mthatha Community Food Hub, established with support from SABCDA's Community Owned Enterprise Program, 
+                has become a thriving business that employs 30 local residents. The hub combines a grocery store, 
+                bakery, and catering service, serving over 500 families in the area.
+            </p>
+            <div class="mb-4">
+                <p class="font-medium text-gray-700 mb-1">Impact Achieved:</p>
+                <ul class="list-disc list-inside text-gray-600 space-y-1">
+                    <li>30 full-time jobs created (60% women, 40% youth)</li>
+                    <li>R1.2 million in annual revenue in first year</li>
+                    <li>15% of profits reinvested in community projects</li>
+                </ul>
+            </div>
+            <p class="text-gray-600">
+                "This enterprise has transformed our community," says manager Nosipho Dlamini. "We're not just a business - 
+                we're a hub for economic activity and skills development."
+            </p>
+            <button class="close-expanded-btn text-sm text-yellow-600 hover:text-yellow-700 font-medium">
+                Close Story
+            </button>
+        </div>
+    </div>
+</div>
+
+
+        <!-- Newsletter Subscription Form -->
+<div class="bg-yellow-50 rounded-xl p-8 md:p-12 shadow-inner">
+    <div class="max-w-3xl mx-auto text-center">
+        <h3 class="text-2xl md:text-3xl font-bold text-gray-900 mb-4">Stay <span class="text-yellow-600">Updated</span></h3>
+        <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Subscribe to our newsletter to receive the latest news and updates
+        </p>
+        <form action="mailto:maskkulebc@gmail.com" method="post" enctype="text/plain" class="mt-6 sm:flex max-w-md mx-auto">
+            <label for="newsletter-email" class="sr-only">Email address</label>
+            <input id="newsletter-email" name="email" type="email" required 
+                   class="w-full px-5 py-3 border border-gray-300 shadow-sm placeholder-gray-400 focus:ring-yellow-500 focus:border-yellow-500 sm:max-w-xs rounded-md" 
+                   placeholder="Enter your email">
+            <div class="mt-3 rounded-md shadow sm:mt-0 sm:ml-3 sm:flex-shrink-0">
+                <button type="submit" class="w-full flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500">
+                    Subscribe
+                </button>
+            </div>
+        </form>
+        
+        <!-- Success Message (hidden by default) -->
+        <div id="newsletter-success" class="hidden mt-4 p-4 bg-green-50 text-green-700 rounded-lg">
+            <svg class="h-5 w-5 inline mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            </svg>
+            Thank you for subscribing to our newsletter!
+        </div>
+    </div>
+</div>
+
+    </div>
+</div>
+
+
+<!-- Contact Page Content -->
+<div id="contact" class="bg-white">
+    <!-- Hero Section for Contact Page -->
+    <div class="relative h-96 overflow-hidden bg-gray-900">
+        <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80" 
+             alt="Contact us" 
+             class="w-full h-full object-cover opacity-70">
+        <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center px-4">
+                <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Contact <span class="text-yellow-400">Us</span></h1>
+                <p class="text-xl md:text-2xl text-white max-w-3xl mx-auto">
+                    Get in touch with our team for more information
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="bg-gray-100 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <nav class="flex" aria-label="Breadcrumb">
+                <ol class="flex items-center space-x-4">
+                    <li>
+                        <div>
+                            <a href="#" class="text-gray-500 hover:text-gray-700">
+                                <i class="fas fa-home"></i>
+                                <span class="sr-only">Home</span>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="flex-shrink-0 h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <div class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-2 lg:gap-16">
+                <!-- Contact Form -->
+              <div class="mb-12 lg:mb-0">
+    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Send Us a <span class="text-yellow-600">Message</span></h2>
+    <form class="space-y-6">
+        <!-- Name Field -->
+        <div class="relative">
+            <input 
+                type="text" 
+                name="name" 
+                id="name" 
+                autocomplete="name" 
+                class="py-3 px-4 block w-full shadow-sm focus:ring-yellow-500 focus:border-yellow-500 border-gray-300 rounded-md peer placeholder-transparent"
+                placeholder=" "
+            />
+            <label 
+                for="name" 
+                class="absolute left-4 -top-2.5 bg-white px-1 text-sm font-medium text-gray-700 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-gray-700 peer-focus:bg-white"
+            >
+                Your Name
+            </label>
+            <div class="mt-1 text-xs text-gray-500 peer-focus:text-yellow-600">We'll never share your information</div>
+        </div>
+        
+        <!-- Email Field -->
+        <div class="relative">
+            <input 
+                id="email" 
+                name="email" 
+                type="email" 
+                autocomplete="email" 
+                class="py-3 px-4 block w-full shadow-sm focus:ring-yellow-500 focus:border-yellow-500 border-gray-300 rounded-md peer placeholder-transparent"
+                placeholder=" "
+                required
+            />
+            <label 
+                for="email" 
+                class="absolute left-4 -top-2.5 bg-white px-1 text-sm font-medium text-gray-700 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-gray-700 peer-focus:bg-white"
+            >
+                Email Address
+            </label>
+            <div class="mt-1 text-xs text-gray-500 peer-focus:text-yellow-600">We'll need this to respond to you</div>
+        </div>
+        
+        <!-- Phone Field -->
+        <div class="relative">
+            <input 
+                type="tel" 
+                name="phone" 
+                id="phone" 
+                autocomplete="tel" 
+                class="py-3 px-4 block w-full shadow-sm focus:ring-yellow-500 focus:border-yellow-500 border-gray-300 rounded-md peer placeholder-transparent"
+                placeholder=" "
+            />
+            <label 
+                for="phone" 
+                class="absolute left-4 -top-2.5 bg-white px-1 text-sm font-medium text-gray-700 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-gray-700 peer-focus:bg-white"
+            >
+                Phone Number
+            </label>
+            <div class="mt-1 text-xs text-gray-500 peer-focus:text-yellow-600">Optional but helpful for quick responses</div>
+        </div>
+        
+        <!-- Subject Field -->
+        <div class="relative">
+            <select 
+                id="subject" 
+                name="subject" 
+                class="py-3 px-4 block w-full shadow-sm focus:ring-yellow-500 focus:border-yellow-500 border-gray-300 rounded-md peer appearance-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWNoZXZyb24tZG93biI+PHBhdGggZD0ibTYgOSA2IDYgNi02Ii8+PC9zdmc+')] bg-no-repeat bg-[right_1rem_center] bg-[length:1.25rem_1.25rem]"
+            >
+                <option value="" disabled selected hidden></option>
+                <option>General Inquiry</option>
+                <option>Program Information</option>
+                <option>Partnership Opportunity</option>
+                <option>Service Request</option>
+                <option>Other</option>
+            </select>
+            <label 
+                for="subject" 
+                class="absolute left-4 -top-2.5 bg-white px-1 text-sm font-medium text-gray-700 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-gray-700 peer-focus:bg-white"
+            >
+                Subject
+            </label>
+        </div>
+        
+        <!-- Message Field -->
+        <div class="relative">
+            <textarea 
+                id="message" 
+                name="message" 
+                rows="4" 
+                class="py-3 px-4 block w-full shadow-sm focus:ring-yellow-500 focus:border-yellow-500 border-gray-300 rounded-md peer placeholder-transparent"
+                placeholder=" "
+                required
+            ></textarea>
+            <label 
+                for="message" 
+                class="absolute left-4 -top-2.5 bg-white px-1 text-sm font-medium text-gray-700 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-500 peer-placeholder-shown:top-3.5 peer-focus:-top-2.5 peer-focus:text-sm peer-focus:text-gray-700 peer-focus:bg-white"
+            >
+                Your Message
+            </label>
+            <div class="mt-1 text-xs text-gray-500 peer-focus:text-yellow-600">Please include relevant details</div>
+        </div>
+        
+        <!-- Submit Button -->
+        <div>
+            <button 
+                type="submit" 
+                class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-yellow-600 hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-yellow-500 transition-all hover:scale-[1.01] active:scale-[0.99]"
+            >
+                <span class="group-hover:translate-x-1 transition-transform duration-200">Send Message</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="ml-2 group-hover:translate-x-1 transition-transform duration-200">
+                    <path d="m22 2-7 20-4-9-9-4Z"/>
+                    <path d="M22 2 11 13"/>
+                </svg>
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+    /* Custom focus styles */
+    input:focus, textarea:focus, select:focus {
+        outline: 2px solid rgba(234, 179, 8, 0.3);
+        outline-offset: 2px;
+    }
+    
+    /* Custom select arrow */
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+    }
+    
+    /* Animation for floating labels */
+    .peer:focus ~ label, .peer:not(:placeholder-shown) ~ label {
+        transform: translateY(0) scale(0.85);
+    }
+    
+    /* Helper text animation */
+    .peer:focus ~ div {
+        transform: translateY(0);
+        opacity: 1;
+    }
+</style>
+
+<script>
+    // Add character counter for message field
+    document.addEventListener('DOMContentLoaded', function() {
+        const messageField = document.getElementById('message');
+        const charCounter = document.createElement('div');
+        charCounter.className = 'absolute right-2 bottom-2 text-xs text-gray-500';
+        messageField.parentElement.appendChild(charCounter);
+        
+        messageField.addEventListener('input', function() {
+            const remaining = 500 - this.value.length;
+            charCounter.textContent = `${remaining} characters remaining`;
+            charCounter.style.color = remaining < 50 ? '#dc2626' : remaining < 100 ? '#ea580c' : '#6b7280';
+        });
+        
+        // Add subtle animation to submit button
+        const submitBtn = document.querySelector('button[type="submit"]');
+        submitBtn.classList.add('group');
+    });
+</script>
+                
+                <!-- Contact Information -->
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Contact <span class="text-yellow-600">Information</span></h2>
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-inner">
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Address</h3>
+                                    <p class="text-gray-600">No 10 Trump Street, Johannesburg, South Africa</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600">
+                                        <i class="fas fa-phone-alt"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Phone</h3>
+                                    <p class="text-gray-600">011 681 0465</p>
+                                    <div class="mt-2">
+                                        <h4 class="text-sm font-medium text-gray-900">Block Contacts:</h4>
+                                        <ul class="text-gray-600 text-sm mt-1 space-y-1">
+                                            <li>Block A (EC, MP, KZN): 083 527 2684</li>
+                                            <li>Block B (NC, FS, WC): 078 738 0485</li>
+                                            <li>Block C (NW, LP, GP): 072 861 9567</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600">
+                                        <i class="fas fa-envelope"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Email</h3>
+                                    <p class="text-gray-600">masikulebc@gmail.com</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600">
+                                        <i class="fab fa-whatsapp"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">WhatsApp</h3>
+                                    <p class="text-gray-600">076 589 1021</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0">
+                                    <div class="flex items-center justify-center h-12 w-12 rounded-full bg-yellow-100 text-yellow-600">
+                                        <i class="fas fa-clock"></i>
+                                    </div>
+                                </div>
+                                <div class="ml-4">
+                                    <h3 class="text-lg font-medium text-gray-900">Operating Hours</h3>
+                                    <p class="text-gray-600">Monday - Friday: 8:00 AM - 5:00 PM</p>
+                                    <p class="text-gray-600">Saturday: 9:00 AM - 1:00 PM</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+    <h3 class="text-lg font-medium text-gray-900 mb-4">Follow Us</h3>
+    <div class="flex space-x-4">
+        <a href="https://www.facebook.com/CommunityShop2024" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-yellow-600 transition duration-300">
+            <i class="fab fa-facebook-f text-xl"></i>
+            <span class="sr-only">Facebook</span>
+        </a>
+        <a href="https://twitter.com/CommunityShop2024" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-yellow-600 transition duration-300">
+            <i class="fab fa-twitter text-xl"></i>
+            <span class="sr-only">Twitter</span>
+        </a>
+        <a href="https://www.instagram.com/CommunityShop2024" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-yellow-600 transition duration-300">
+            <i class="fab fa-instagram text-xl"></i>
+            <span class="sr-only">Instagram</span>
+        </a>
+        <a href="https://www.linkedin.com/company/communityshop2024" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-yellow-600 transition duration-300">
+            <i class="fab fa-linkedin-in text-xl"></i>
+            <span class="sr-only">LinkedIn</span>
+        </a>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Map Section -->
+            <div class="mt-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 text-center">Our <span class="text-yellow-600">Location</span></h2>
+                <div class="rounded-xl overflow-hidden shadow-lg h-96">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3580.041986383072!2d28.03746631502889!3d-26.19553798344238!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e950c1a1e6e414d%3A0x8e1a7e1e1e1e1e1e!2s10%20Trump%20St%2C%20Johannesburg%2C%202000!5e0!3m2!1sen!2sza!4v1620000000000!5m2!1sen!2sza" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+       
+        <!-- Testimonials -->
+        <div class="py-20 bg-yellow-600 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Success <span class="text-white">Stories</span></h2>
+                    <p class="text-xl max-w-3xl mx-auto">
+                        Hear from community organizations and entrepreneurs who have benefited from our programs.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-sm">
+                        <div class="flex items-center mb-6">
+                            <img class="h-12 w-12 rounded-full" src="images/nomsa.jpg" alt="Testimonial">
+                            <div class="ml-4">
+                                <h4 class="font-bold">Nomsa Dlamini</h4>
+                                <p class="text-yellow-200">Spazza Shop Owner, Soweto</p>
+                            </div>
+                        </div>
+                        <p class="italic">
+                            "Through SABCDA's program, my spazza shop has grown from a small kiosk to a proper retail store. The training and wholesale access have transformed my business."
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-sm">
+                        <div class="flex items-center mb-6">
+                            <img class="h-12 w-12 rounded-full" src="images/dshanp.jpg" alt="Testimonial">
+                            <div class="ml-4">
+                                <h4 class="font-bold">Thabo Mbeki</h4>
+                                <p class="text-yellow-200">Community Leader, Eastern Cape</p>
+                            </div>
+                        </div>
+                        <p class="italic">
+                            "The business forums have brought our community together and created real economic opportunities. We've started three community-owned enterprises in the past year."
+                        </p>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 rounded-lg p-8 backdrop-filter backdrop-blur-sm">
+                        <div class="flex items-center mb-6">
+                            <img class="h-12 w-12 rounded-full" src="images/lerato.jpg" alt="Testimonial">
+                            <div class="ml-4">
+                                <h4 class="font-bold">Lerato Moloi</h4>
+                                <p class="text-yellow-200">Service Provider, Pretoria</p>
+                            </div>
+                        </div>
+                        <p class="italic">
+                            "As a facilitator, I've helped develop 15 spazza shops in my area. The model works, and it's creating jobs and opportunities where they're needed most."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="py-20 bg-gray-900 text-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Community?</h2>
+                <p class="text-xl mb-10 max-w-3xl mx-auto">
+                    Whether you're a community organization, entrepreneur, or service provider, we have opportunities for you to grow and make an impact.
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center gap-4">
+                    <a href="#contact" class="px-8 py-4 bg-yellow-600 text-white font-bold rounded-lg hover:bg-yellow-700 transition duration-300 text-lg">
+                        Join Our Network
+                    </a>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">About SABCDA</h3>
+                    <p class="text-gray-400 mb-4">
+                        The South African Business and Community Development Association is a registered nonprofit organization promoting the RTBCDM model.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-yellow-400">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-yellow-400">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Programs</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Services</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Programs</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Spazza Shop Development</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Business Forums</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Community Enterprises</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-yellow-400">Independent Contractors</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-map-marker-alt mt-1 mr-2 text-yellow-400"></i>
+                            <span>No 10 Trump Street, Johannesburg</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-phone-alt mt-1 mr-2 text-yellow-400"></i>
+                            <span>011 681 0465</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-2 text-yellow-400"></i>
+                            <span>maskkulebc@gmail.com</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fab fa-whatsapp mt-1 mr-2 text-yellow-400"></i>
+                            <span>076 589 1021</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 text-sm">
+                    &copy; 2025 South African Business and Community Development Association. All rights reserved.
+                </p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 text-sm">Privacy Policy</a>
+                    <a href="#" class="text-gray-400 hover:text-yellow-400 text-sm">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // Scroll animation for sliding cards
+        function checkSlide() {
+            const slideInLefts = document.querySelectorAll('.slide-in-left');
+            const slideInRights = document.querySelectorAll('.slide-in-right');
+            
+            slideInLefts.forEach(slideInLeft => {
+                // Halfway through the element
+                const slideInAt = (window.scrollY + window.innerHeight) - slideInLeft.offsetHeight / 2;
+                // Bottom of the element
+                const elementBottom = slideInLeft.offsetTop + slideInLeft.offsetHeight;
+                const isHalfShown = slideInAt > slideInLeft.offsetTop;
+                const isNotScrolledPast = window.scrollY < elementBottom;
+                
+                if (isHalfShown && isNotScrolledPast) {
+                    slideInLeft.classList.add('active');
+                }
+            });
+            
+            slideInRights.forEach(slideInRight => {
+                // Halfway through the element
+                const slideInAt = (window.scrollY + window.innerHeight) - slideInRight.offsetHeight / 2;
+                // Bottom of the element
+                const elementBottom = slideInRight.offsetTop + slideInRight.offsetHeight;
+                const isHalfShown = slideInAt > slideInRight.offsetTop;
+                const isNotScrolledPast = window.scrollY < elementBottom;
+                
+                if (isHalfShown && isNotScrolledPast) {
+                    slideInRight.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkSlide);
+        // Initialize on load in case elements are already in view
+        window.addEventListener('load', checkSlide);
+
+        const backToTop = document.getElementById('backToTop');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 300) {
+    backToTop.classList.add('visible');
+  } else {
+    backToTop.classList.remove('visible');
+  }
+});
+
+backToTop.addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});
+
+//Navbar Dropdown
+// Add this JavaScript to handle the dropdown behavior
+    document.addEventListener('DOMContentLoaded', function() {
+        const dropdowns = document.querySelectorAll('.navbar-dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            const button = dropdown.querySelector('button');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            let timeout;
+            
+            // Show on hover
+            dropdown.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                menu.style.display = 'block';
+                menu.style.opacity = '1';
+            });
+            
+            // Hide with delay when leaving
+            dropdown.addEventListener('mouseleave', () => {
+                timeout = setTimeout(() => {
+                    menu.style.opacity = '0';
+                    setTimeout(() => {
+                        if (menu.style.opacity === '0') {
+                            menu.style.display = 'none';
+                        }
+                    }, 200);
+                }, 300); // 300ms delay before starting to hide
+            });
+            
+            // Cancel hide if re-entering dropdown
+            menu.addEventListener('mouseenter', () => {
+                clearTimeout(timeout);
+                menu.style.opacity = '1';
+                menu.style.display = 'block';
+            });
+        });
+        
+        // Mobile menu toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            const isExpanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+            mobileMenuButton.setAttribute('aria-expanded', !isExpanded);
+            mobileMenu.classList.toggle('hidden');
+        });
+    });
+
+// Animated counter with Intersection Observer
+    document.addEventListener('DOMContentLoaded', function() {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200; // Animation duration in ms
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = +entry.target.getAttribute('data-target');
+                    const count = +entry.target.innerText;
+                    const increment = target / speed;
+                    
+                    if (count < target) {
+                        entry.target.innerText = Math.ceil(count + increment);
+                        setTimeout(() => {
+                            const event = new CustomEvent('countTick', { detail: { element: entry.target, current: Math.ceil(count + increment) } });
+                            document.dispatchEvent(event);
+                        }, 1);
+                    } else {
+                        entry.target.innerText = target;
+                    }
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+        
+        // Add confetti effect when counting completes
+        document.addEventListener('countTick', (e) => {
+            if (e.detail.current === +e.detail.element.getAttribute('data-target')) {
+                // You could add a subtle confetti effect here
+                // For example, using a library like canvas-confetti
+                // Or a simple emoji animation:
+                const confetti = document.createElement('div');
+                confetti.innerHTML = '✨';
+                confetti.className = 'absolute text-xl opacity-70 animate-confetti';
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = `${Math.random() * 100}%`;
+                e.detail.element.parentElement.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 1000);
+            }
+        });
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+        // Learn More button functionality
+        const learnMoreButtons = document.querySelectorAll('.learn-more-btn');
+        const closeButtons = document.querySelectorAll('.close-expanded');
+        
+        learnMoreButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const cardContainer = this.closest('.card-container');
+                const expandedContent = cardContainer.querySelector('.card-expanded');
+                
+                // Close all other expanded cards first
+                document.querySelectorAll('.card-expanded').forEach(item => {
+                    if (item !== expandedContent) {
+                        item.classList.remove('active');
+                        item.previousElementSibling.classList.remove('rounded-b-none');
+                    }
+                });
+                
+                // Toggle current card
+                expandedContent.classList.toggle('active');
+                cardContainer.querySelector('.card-main').classList.toggle('rounded-b-none');
+                
+                // Scroll to the expanded content if it's not fully visible
+                expandedContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+        });
+        
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const expandedContent = this.closest('.card-expanded');
+                expandedContent.classList.remove('active');
+                expandedContent.previousElementSibling.classList.remove('rounded-b-none');
+            });
+        });
+    });
+
+     document.addEventListener('DOMContentLoaded', function() {
+        // News Card Read More Functionality
+        const readMoreButtons = document.querySelectorAll('.read-more-btn');
+        const closeButtons = document.querySelectorAll('.close-expanded-btn');
+        
+        readMoreButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const cardContainer = this.closest('.news-card-container');
+                const expandedContent = cardContainer.querySelector('.news-card-expanded');
+                const cardMain = cardContainer.querySelector('.news-card-main');
+                
+                // Close all other expanded cards first
+                document.querySelectorAll('.news-card-expanded').forEach(item => {
+                    if (item !== expandedContent) {
+                        item.classList.remove('active');
+                        item.previousElementSibling.classList.remove('rounded-b-none');
+                    }
+                });
+                
+                // Toggle current card
+                expandedContent.classList.toggle('active');
+                cardMain.classList.toggle('rounded-b-none');
+                
+                // Scroll to the expanded content if it's not fully visible
+                expandedContent.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            });
+        });
+        
+        closeButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const expandedContent = this.closest('.news-card-expanded');
+                const cardMain = expandedContent.previousElementSibling;
+                expandedContent.classList.remove('active');
+                cardMain.classList.remove('rounded-b-none');
+            });
+        });
+        
+        // Enhanced Newsletter Form Handling
+        const newsletterForm = document.getElementById('newsletter-form');
+        const emailInput = document.getElementById('newsletter-email');
+        const emailError = document.getElementById('email-error');
+        const successMessage = document.getElementById('success-message');
+        
+        newsletterForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset states
+            emailError.classList.add('hidden');
+            emailInput.classList.remove('border-red-500');
+            
+            // Validate email
+            const email = emailInput.value.trim();
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                emailInput.classList.add('border-red-500');
+                emailError.textContent = 'Please enter a valid email address';
+                emailError.classList.remove('hidden');
+                return;
+            }
+            
+            // Simulate form submission (replace with actual AJAX call)
+            setTimeout(() => {
+                newsletterForm.reset();
+                successMessage.classList.remove('hidden');
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.classList.add('hidden');
+                }, 5000);
+            }, 1000);
+        });
+        
+        // Clear error when typing
+        emailInput.addEventListener('input', function() {
+            if (emailInput.classList.contains('border-red-500')) {
+                emailInput.classList.remove('border-red-500');
+                emailError.classList.add('hidden');
+            }
+        });
+    });
+
+ // Form submission handler
+    document.querySelector('form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // In a real implementation, you would send the data to your server here
+        // For demo purposes, we'll just show the success message
+        document.getElementById('newsletter-success').classList.remove('hidden');
+        
+        // Reset form
+        this.reset();
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+            document.getElementById('newsletter-success').classList.add('hidden');
+        }, 5000);
+    });
+
+    // Mobile sidebar toggle
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileSidebar = document.getElementById('mobile-sidebar');
+const mobileCloseButton = document.getElementById('mobile-close-button');
+const mobileOverlay = document.getElementById('mobile-overlay');
+
+mobileMenuButton.addEventListener('click', () => {
+  mobileSidebar.classList.remove('-translate-x-full');
+  mobileOverlay.classList.remove('hidden');
+  document.body.classList.add('overflow-hidden');
+});
+
+mobileCloseButton.addEventListener('click', () => {
+  mobileSidebar.classList.add('-translate-x-full');
+  mobileOverlay.classList.add('hidden');
+  document.body.classList.remove('overflow-hidden');
+});
+
+mobileOverlay.addEventListener('click', () => {
+  mobileSidebar.classList.add('-translate-x-full');
+  mobileOverlay.classList.add('hidden');
+  document.body.classList.remove('overflow-hidden');
+});
+
+// Mobile nav menu toggle
+const mobileNavButton = document.getElementById('mobile-nav-button');
+const mobileNavMenu = document.getElementById('mobile-nav-menu');
+
+mobileNavButton.addEventListener('click', () => {
+  mobileNavMenu.classList.toggle('hidden');
+});
+
+// Mobile dropdown functionality
+document.querySelectorAll('.mobile-dropdown-btn').forEach(button => {
+  button.addEventListener('click', () => {
+    const content = button.nextElementSibling;
+    const icon = button.querySelector('i');
+    
+    content.classList.toggle('hidden');
+    icon.classList.toggle('fa-chevron-down');
+    icon.classList.toggle('fa-chevron-up');
+  });
+});
+    </script>
+</body>
+</html>
