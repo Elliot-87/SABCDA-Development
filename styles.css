@@ -24,3 +24,35 @@
   opacity: 1;
   transform: translateY(-50%) scale(1);
 }
+/* Social Icons Hover Effects */
+.social-icon {
+  @apply w-10 h-10 flex items-center justify-center rounded-full bg-black/20 backdrop-blur-sm;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+/* WhatsApp Tooltip */
+.whatsapp-tooltip {
+  @apply absolute right-full mr-3 px-3 py-1 bg-gray-900 text-white text-xs rounded whitespace-nowrap opacity-0 transition-opacity;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+  70% { box-shadow: 0 0 0 12px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.whatsapp-button {
+  animation: pulse 2s infinite;
+}
+
+/* Tooltip animation */
+  .tooltip {
+    opacity: 0;
+    transform: translateY(5px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+  .group:hover .tooltip {
+    opacity: 1;
+    transform: translateY(0);
+  }

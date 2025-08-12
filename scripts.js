@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Fallback if video fails to load
     heroVideo.addEventListener('error', function() {
-      console.log('Video failed to load, falling back to image');
+      console.log('VidGIT eo failed to load, falling back to image');
       const fallbackImg = this.querySelector('img');
       if(fallbackImg) {
         this.style.display = 'none';
